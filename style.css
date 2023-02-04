@@ -1,7 +1,6 @@
 .wrap {
   max-width: 100%;
   background: #1f2436;
-  height: 500vh;
   font-family: 'Black Ops One', cursive;
   font-family: 'Kalam', cursive;
   font-family: 'Noto Sans TC', sans-serif;
@@ -85,7 +84,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(31, 36, 54, 0.5);
+  background: rgba(31, 36, 54, 0.7);
 }
 
 .left-bg > img {
@@ -142,7 +141,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(31, 36, 54, 0.5);
+  background: rgba(31, 36, 54, 0.7);
 }
 
 .right-bg > img {
@@ -173,4 +172,72 @@
 .right-text > p {
   font-size: 1.1rem;
   line-height: 1.3;
+}
+
+.footer {
+  width: 100%;
+  margin-top: 5rem;
+  padding: 2rem ;
+  background: #ccc909;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.footer-logo {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: 101%;
+  width: 100px;
+  height: 60px;
+  background-image: url(image/footer.png);
+}
+
+.contact-me {
+  position: relative;
+  font-size: 30px;
+  width: 300px;
+}
+
+.contact-me > a {
+  position: absolute;
+  padding: .5rem;
+  display: block;
+}
+
+.contact-me > .instagram {
+  transform: translateY(-50%);
+}
+
+.contact-me > .facebook {
+  left: 20%;
+  transform: translateY(-50%);
+}
+
+.contact-me > .personal-facebook {
+  left: 40%;
+  transform: translateY(-50%);
+}
+
+.contact-me > .twitter {
+  left: 60%;
+  transform: translateY(-50%);
+}
+
+.contact-me > .pixiv {
+  left: 80%;
+  transform: translateY(-50%);
+}
+
+.contact-me > *:hover {
+  animation-name: share;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes share {
+  50% { transform: scale(1.2) translateY(-50%); }
+  100% { transform: scale(1) translateY(-50%); }
 }
