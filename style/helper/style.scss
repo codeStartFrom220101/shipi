@@ -8,7 +8,7 @@ img {
 }
 
 .wrap {
-  max-width: 100%;
+  width: 100%;
   background: #1f2436;
   font-family: 'Black Ops One', cursive;
   font-family: 'Kalam', cursive;
@@ -38,18 +38,18 @@ img {
 }
 
 .logo-bg {
-  background-image: url(image/logo.png);
+  background-image: url(../image/logo.png);
 }
 
 .logo-bg-white {
-  background-image: url(image/logo白.png);
+  background-image: url(../image/logo白.png);
 }
 
 .banner {
   height: 856px;
   width: 100%;
   position: relative;
-  background-image:url(image/banner.jpg);
+  background-image:url(../image/banner.jpg);
   background-size: cover;
   background-position: center center;
   z-index: 1;
@@ -81,7 +81,7 @@ img {
   position: relative;
   width: 600px;
   height: 1080px;
-  background: url(./image/左手.jpg);
+  background: url(../image/左手.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 20%;
@@ -127,7 +127,7 @@ img {
   margin-bottom: 2rem;
 }
 
-.left-text > .btn > button {
+.btn > .pulse {
   background: none;
   border: 2px solid;
   line-height: 1;
@@ -136,15 +136,7 @@ img {
   height: 5rem;
   text-align: center;
   border-radius: 50%;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
-}
-
-.left-text > .btn > button:hover {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em transparent;
+  cursor: pointer;
 }
 
 .right {
@@ -159,7 +151,7 @@ img {
   position: relative;
   width: 600px;
   height: 1080px;
-  background: url(./image/右手.jpg);
+  background: url(../image/右手.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 80% 20%;
@@ -202,6 +194,7 @@ img {
 .right-text > p {
   font-size: 1.1rem;
   line-height: 1.3;
+  margin-bottom: 2rem;
 }
 
 .footer {
@@ -222,7 +215,7 @@ img {
   text-indent: 101%;
   width: 100px;
   height: 60px;
-  background-image: url(image/footer.png);
+  background-image: url(../image/footer.png);
 }
 
 .contact-me {
