@@ -3,7 +3,8 @@ const rightImg = document.querySelector('.right-bg>img')
 const container = document.querySelector('.container')
 const rightBg = document.querySelector('.right-bg')
 const left = document.querySelector('.left')
-
+const banner = document.querySelector('.banner')
+const logo = document.querySelector('.logo')
 
 let width = 0;
 let height = 0;
@@ -18,7 +19,16 @@ rightImg.addEventListener('mousemove', handleMouseMove)
 rightImg.addEventListener('mouseenter', handleMouseEnter)
 rightImg.addEventListener('mouseleave', handleMouseLeave)
 
-console.log(rightBg.offsetLeft);
+window.addEventListener('scroll', () => {
+  if (window.scrollY > banner.offsetHeight -100) {
+    logo.classList.remove('logo-bg')
+    logo.classList.add('logo-bg-white')
+  } else {
+    logo.classList.remove('logo-bg-white')
+    logo.classList.add('logo-bg')
+  }
+})
+
 
 function handleMouseMove(e) {
   if(e.target === leftImg) {
