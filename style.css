@@ -71,11 +71,11 @@
 .left-bg {
   position: relative;
   width: 600px;
-  height: 100vh;
+  height: 1080px;
   background: url(./image/左手.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 10% 20%;
+  background-position: 50% 20%;
 }
 
 .left-gradient {
@@ -89,7 +89,7 @@
 
 .left-bg > img {
   position: absolute;
-  max-width: 500px;
+  width: 500px;
   left: 50%;
   top: 50%;
   transform: translate(0, -50%);
@@ -97,10 +97,10 @@
   border-radius: 50%;
 }
 
-.left-bg:hover >img{
+/* .left-bg:hover >img{
   transform: translate(20px, -50%);
   transition: .5s;
-}
+} */
 
 .left-text {
   color: white;
@@ -128,7 +128,7 @@
 .right-bg {
   position: relative;
   width: 600px;
-  height: 100vh;
+  height: 1080px;
   background: url(./image/右手.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -146,7 +146,7 @@
 
 .right-bg > img {
   position: absolute;
-  max-width: 500px;
+  width: 500px;
   right: 50%;
   top: 50%;
   transform: translate(0,-50%);
@@ -154,10 +154,10 @@
   border-radius: 50%;
 }
 
-.right-bg:hover > img {
+/* .right-bg:hover > img {
   transform: translate(-20px,-50%);
   transition: .5s;
-}
+} */
 
 .right-text {
   color: white;
@@ -238,6 +238,6 @@
 }
 
 @keyframes share {
-  50% { transform: scale(1.2) translateY(-50%); }
+  50% { transform: scale(1.1) translateY(-50%); }
   100% { transform: scale(1) translateY(-50%); }
 }
