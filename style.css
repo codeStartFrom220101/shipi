@@ -46,6 +46,14 @@ blockquote, q {
 	quotes: "" "";
 }
 
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
 .wrap {
   max-width: 100%;
   background: #1f2436;

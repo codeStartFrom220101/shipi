@@ -40,7 +40,7 @@ function handleMouseMove(e) {
   const tX = mousePX * -40
   const tY = mousePY * -40
 
-  // e.target.style.transform = `translateX(${tX}px) translateY(calc(-50% + ${tY}px)) rotateY(${rY}deg) rotateX(${rX}deg)`
+  e.target.style.transform = `translateX(${tX}px) translateY(calc(-50% + ${tY}px)) rotateY(${rY}deg) rotateX(${rX}deg)`
   
   // console.log(e.target.style.translateX, e.target.style.transform);
 }
