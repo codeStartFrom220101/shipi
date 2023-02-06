@@ -138,15 +138,6 @@ img {
   border-radius: 50%;
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
-}
-
-.left-text > .btn > button:hover {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em transparent;
-}
-
 .right {
   display: flex;
   flex-direction: row-reverse;

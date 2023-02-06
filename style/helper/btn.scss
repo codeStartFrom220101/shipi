@@ -73,7 +73,7 @@
   // Make a map with the class names and matching colors
 $colors: (
   fill: #a972cb,
-  pulse: #fff, 
+  pulse: rgb(248,200,144), 
   close: #ff7f82, 
   raise: #ffa260, 
   up: #e4cb58, 
@@ -98,6 +98,6 @@ button {
   &:hover,
   &:focus { 
     border-color: var(--hover);
-    color: rgb(248,200,144);
+    color: #fff;
   }
 }

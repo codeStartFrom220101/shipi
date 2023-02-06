@@ -77,8 +77,8 @@
 }
 
 .pulse {
-  --color: #fff;
-  --hover: white;
+  --color: rgb(248, 200, 144);
+  --hover: #daf890;
 }
 
 .close {
@@ -113,5 +113,5 @@ button {
 }
 button:hover, button:focus {
   border-color: var(--hover);
-  color: rgb(248, 200, 144);
+  color: #fff;
 }/*# sourceMappingURL=btn.css.map */
