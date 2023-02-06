@@ -59,6 +59,13 @@ img {
   z-index: 1;
 }
 
+@media (max-width: 1280px) {
+  .banner {
+    background-image: url(../image/mobile-banner.jpg);
+    background-position: 70% 50%;
+  }
+}
+
 .banner-gradient {
   position: absolute;
   top: 0;
