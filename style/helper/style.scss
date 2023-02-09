@@ -62,7 +62,7 @@ img {
 @media (max-width: 1280px) {
   .banner {
     background-image: url(../image/mobile-banner.jpg);
-    background-position: 70% 50%;
+    background-position: 50% 30%;
   }
 }
 
@@ -86,6 +86,7 @@ section > h2 {
   font-size: 3rem;
   text-align: center;
   margin-top: 4rem;
+  font-weight: bold;
 }
 
 .left {
@@ -116,7 +117,7 @@ section > h2 {
 
 .left-img {
   position: absolute;
-  max-width: 500px;
+  width: 500px;
   left: 30%;
   top: 50%;
   transform: translate(0, -50%);
@@ -141,6 +142,7 @@ section > h2 {
 .left-text > h3 {
   margin-bottom: 1.5rem;
   font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .left-text > p {
@@ -150,9 +152,9 @@ section > h2 {
 }
 
 @media (max-width: 1280px) {
+
   .left {
     flex-direction: column;
-    margin-bottom: 2rem;
   }
 
   .left-bg {
@@ -161,6 +163,8 @@ section > h2 {
     background-position: 50% 25%;
     background-attachment: unset;
     margin-bottom: 2rem;
+    transition: 1.5s;
+    border: 1px solid #000;
   }
 
   .left-img {
@@ -182,9 +186,10 @@ section > h2 {
     transform: translate(-50%,-30%);
     border-radius: 5px;
     box-shadow:
-      rgba(black, 0.66) 0 30px 60px 0,
-      inset #333 0 0 0 5px,
-      inset rgba(white, 0.5) 0 0 0 6px;
+    rgba(black, 0.66) 0 30px 60px 0,
+    inset #333 0 0 0 5px,
+    inset rgba(white, 0.5) 0 0 0 6px;
+    cursor: pointer;
   }
 
   .left-mobile-text {
@@ -196,6 +201,27 @@ section > h2 {
   .left-text {
     margin-right: 0;
     width: 50%;
+  }
+
+  .left.active {
+    .left-bg{
+      width: max(100vw, 500px);
+      height:max(100vh, 707px);
+      background-position: 50% 100%;
+      background-size: contain;
+      transition: 1s;
+    }
+    .left-gradient {
+      opacity: 0;
+      transition: 1s;
+    }
+    .left-mobile-img {
+      display: none;
+    }
+    .left-text {
+      text-align: center;
+      width: 100%;
+    }
   }
 }
 
@@ -217,15 +243,24 @@ section > h2 {
 }
 
 .btn > .pulse {
+  font-size: .8rem;
   background: none;
   border: 2px solid;
   line-height: 1;
   margin: 0.5em;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .btn > .pulse {
+    font-size: .6rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 
 .right {
@@ -233,7 +268,7 @@ section > h2 {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .right-bg {
@@ -264,9 +299,9 @@ section > h2 {
   transition: .5s cubic-bezier(0.23, 1, 0.32, 1);
   border-radius: 10px;
   box-shadow:
-    rgba(black, 0.66) 0 30px 60px 0,
-    inset #333 0 0 0 5px,
-    inset rgba(white, 0.5) 0 0 0 6px;
+  rgba(black, 0.66) 0 30px 60px 0,
+  inset #333 0 0 0 5px,
+  inset rgba(white, 0.5) 0 0 0 6px;
 }
 
 .right-mobile-img {
@@ -282,6 +317,7 @@ section > h2 {
 .right-text > h3 {
   margin-bottom: 1.5rem;
   font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .right-text > p {
@@ -293,7 +329,7 @@ section > h2 {
 @media (max-width: 1280px) {
   .right {
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   .right-bg {
@@ -302,6 +338,7 @@ section > h2 {
     background-position: 55% 22%;
     background-attachment: unset;
     margin-bottom: 2rem;
+    transition: 1.5s;
   }
   
   .right-img {
@@ -326,6 +363,7 @@ section > h2 {
       rgba(black, 0.66) 0 30px 60px 0,
       inset #333 0 0 0 5px,
       inset rgba(white, 0.5) 0 0 0 6px;
+    cursor: pointer;
   }
 
   .right-mobile-text {
@@ -338,6 +376,27 @@ section > h2 {
   .right-text {
     margin-left: 0;
     width: 50%;
+  }
+
+  .right.active {
+    .right-bg{
+      max-width: 500px;
+      height:max(100vh, 707px);
+      background-position: 50% 100%;
+      background-size: contain;
+      transition: 1s;
+    }
+    .right-gradient {
+      opacity: 0;
+      transition: 1s
+    }
+    .right-mobile-img {
+      display: none;
+    }
+    .right-text {
+      text-align: center;
+      width: 100%;
+    }
   }
 }
 
@@ -359,14 +418,16 @@ section > h2 {
 }
 
 .footer {
-  width: 100%;
   margin-top: 5rem;
-  padding: 2rem ;
   background: rgb(248,200,144);
+}
+
+.footer-container {
+  width: 100%;
+  padding: 2rem ;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .footer-logo {
@@ -426,3 +487,83 @@ section > h2 {
   50% { transform: scale(1.1) translateY(-50%); }
   100% { transform: scale(1) translateY(-50%); }
 }
+
+.copyright {
+  text-align: center;
+  font-size: 0.8rem;
+  padding-bottom: .5rem;
+  color: #1f2436;
+}
+
+@media (max-width: 1280px) {
+  .footer {
+    margin-top: 2rem;
+  }
+}
+
+.business {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.business-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  border-radius: .5rem;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+  }
+
+  .business-topic-mask {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+    border-radius: .5rem;
+    border: 1px solid rgba(white, 0.3);
+    background: rgba(black, 0.2);
+    transition: .5s;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+      transition: .5s;
+    }
+
+    .business-topic-mask {
+      top: 8px;
+      left: 8px;
+      bottom: 8px;
+      right: 8px;
+      border: 1px solid rgba(white, 0.7);
+      background: rgba(black, 0.1);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .business {
+  }
+  .business-container {
+  }
+}
+

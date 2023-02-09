@@ -106,12 +106,12 @@
   --hover: #1973bc;
 }
 
-button {
+.fill, .pulse, .close, .raise, .up, .slide, .offset {
   color: var(--color);
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-button:hover, button:focus {
+.fill:hover, .fill:focus, .pulse:hover, .pulse:focus, .close:hover, .close:focus, .raise:hover, .raise:focus, .up:hover, .up:focus, .slide:hover, .slide:focus, .offset:hover, .offset:focus {
   border-color: var(--hover);
   color: #fff;
 }/*# sourceMappingURL=btn.css.map */

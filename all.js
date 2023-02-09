@@ -1,11 +1,36 @@
 const leftImg = document.querySelector('.left-bg>img')
 const rightImg = document.querySelector('.right-bg>img')
-const container = document.querySelector('.container')
-const rightBg = document.querySelector('.right-bg')
-const left = document.querySelector('.left')
 const banner = document.querySelector('.banner')
 const logo = document.querySelector('.logo')
-const leftBtn = document.querySelector('#leftBtn')
+const leftMbImg = document.querySelector('.left-mobile-img>img')
+const rightMbImg = document.querySelector('.right-mobile-img>img')
+const left = document.querySelector('.left')
+const right = document.querySelector('.right')
+const body = document.querySelector('body')
+const businessImg = document.querySelectorAll('.business-container>img')
+const business = document.querySelector('.business')
+const lightbox = document.querySelector('.lightbox')
+const lightboxImg = lightbox.querySelector('img')
+const lightboxClose = lightbox.querySelector('.close-btn')
+
+let index = 0
+let arr = []
+
+if (leftMbImg) {
+  leftMbImg.addEventListener('click', () => {
+    left.classList.add('active')
+    setTimeout(() => {
+      left.classList.remove('active')
+    }, 3000);
+  })
+  rightMbImg.addEventListener('click', () => {
+    right.classList.add('active')
+    console.log(rightMbImg);
+    setTimeout(() => {
+      right.classList.remove('active')
+    }, 3000);
+  })
+}
 
 if (leftImg) {
   let mouseX = 0;
@@ -36,7 +61,7 @@ if (leftImg) {
     
     e.target.style.transform = `translateX(${tX}px) translateY(calc(-50% + ${tY}px)) rotateY(${rY}deg) rotateX(${rX}deg)`
   }
-  
+
   function handleMouseEnter() {
     clearTimeout(mouseLeaveDelay)
   }
@@ -58,4 +83,42 @@ window.addEventListener('scroll', () => {
     logo.classList.remove('logo-bg-white')
     logo.classList.add('logo-bg')
   }
+})
+
+// lightbox
+business.addEventListener('click', (e) => {
+  arr = [ ...businessImg ]
+  index = e.target.closest('.business-container').dataset.bimg - 1
+  const imgUrl = businessImg[index].getAttribute('src')
+  lightboxImg.setAttribute('src', imgUrl)
+  lightbox.classList.add('active')
+})
+
+const lightboxNext = lightbox.querySelector('.next')
+const lightboxPre = lightbox.querySelector('.pre')
+
+console.log(lightboxNext, lightboxPre);
+
+lightboxNext.addEventListener('click', () => {
+  if (!lightbox.classList.contains('active')) {
+    return;
+  }
+  index = index * 1
+  index === arr.length - 1 ? index = 0 : index += 1
+  const imgUrl = businessImg[index].getAttribute('src')
+  lightboxImg.setAttribute('src', imgUrl)
+})
+
+lightboxPre.addEventListener('click', () => {
+  if (!lightbox.classList.contains('active')) {
+    return;
+  }
+  index = index * 1
+  index === 0 ? index = arr.length - 1 : index -= 1
+  const imgUrl = businessImg[index].getAttribute('src')
+  lightboxImg.setAttribute('src', imgUrl)
+})
+
+lightboxClose.addEventListener('click', () => {
+  lightbox.classList.remove('active')
 })

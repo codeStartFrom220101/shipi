@@ -1,0 +1,150 @@
+.lightbox {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.lightbox.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.lightbox .next, .lightbox .pre {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+.lightbox .next {
+  right: 20px;
+}
+.lightbox .next:hover {
+  -webkit-animation-name: next;
+          animation-name: next;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.lightbox .pre {
+  left: 20px;
+}
+.lightbox .pre:hover {
+  -webkit-animation-name: pre;
+          animation-name: pre;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.lightbox .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.lightbox .close-btn .lightbox-close {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+.lightbox .close-btn .lightbox-close::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 19.5px;
+  width: 30px;
+  border-top: 3px solid rgba(255, 255, 255, 0.7);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.lightbox .close-btn .lightbox-close::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 19.5px;
+  width: 30px;
+  border-top: 3px solid rgba(255, 255, 255, 0.7);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.lightbox .close-btn .lightbox-close:hover {
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  background: none;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+.lightbox .close-btn .lightbox-close:hover::after, .lightbox .close-btn .lightbox-close:hover::before {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.lightbox .close-btn .lightbox-close:hover::after {
+  left: 2px;
+  top: 15.5px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.lightbox .close-btn .lightbox-close:hover::before {
+  left: 2px;
+  top: 15.5px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+@-webkit-keyframes next {
+  50% {
+    -webkit-transform: translate(5px, -50%);
+            transform: translate(5px, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}
+
+@keyframes next {
+  50% {
+    -webkit-transform: translate(5px, -50%);
+            transform: translate(5px, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}
+@-webkit-keyframes pre {
+  50% {
+    -webkit-transform: translate(-5px, -50%);
+            transform: translate(-5px, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}
+@keyframes pre {
+  50% {
+    -webkit-transform: translate(-5px, -50%);
+            transform: translate(-5px, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}/*# sourceMappingURL=lightbox.css.map */

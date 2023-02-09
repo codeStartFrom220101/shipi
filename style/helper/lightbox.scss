@@ -1,0 +1,104 @@
+.lightbox{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(black, 0.7);
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+  }
+
+  .next, .pre {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: rgba(white, .7);
+    cursor: pointer;
+  }
+
+  .next {
+    right: 20px;
+    &:hover {
+      animation-name: next;
+      animation-duration: .7s;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  .pre {
+    left: 20px;
+    &:hover {
+      animation-name: pre;
+      animation-duration: .7s;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+      .lightbox-close {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: .15s;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 19.5px;
+        width: 30px;
+        border-top: 3px solid rgba(white, .7);
+        transition: .3s;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 19.5px;
+        width: 30px;
+        border-top: 3px solid rgba(white, .7);
+        transition: .3s;
+      }
+      &:hover {
+        border: 3px solid rgba(white, .7);
+        background: none;
+        transition: .15s;
+        &::after, &::before {
+          transition: .3s;
+        }
+        &::after {
+          left: 2px;
+          top: 15.5px;
+          transform: rotate(-45deg);
+        }
+        &::before {
+          left: 2px;
+          top: 15.5px;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
+
+@keyframes next {
+  50% { transform: translate(5px, -50%); }
+  100% { transform: translate(0, -50%); }
+}
+
+@keyframes pre {
+  50% { transform: translate(-5px, -50%); }
+  100% { transform: translate(0, -50%); }
+}
