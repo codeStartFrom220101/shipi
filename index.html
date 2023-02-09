@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>shipi</title>
   <link rel="stylesheet" href="./node_modules/css-resetter/reset.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="style/all.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,7 @@
   <div class="wrap">
     <div class="navbar">
       <h1><a href="#" class="logo logo-bg">路邊的一隻蛇皮</a></h1>
+      <a href="article.html" class="more-btn">更多作品</a>
     </div>
     <div class="banner">
       <div class="banner-gradient">
@@ -28,7 +30,7 @@
       <section>
         <h2>創作角色</h2>
         <div class="left">
-          <div class="left-bg">
+          <div class="left-bg" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="400">
             <div class="left-gradient"></div>
             <img src="./image/左手.jpg" class="left-img" alt="左手">
           </div>
@@ -36,7 +38,7 @@
             <div class="left-mobile-img">
               <img src="./image/左手.jpg" alt="左手">
             </div>
-            <div class="left-text">
+            <div class="left-text" data-aos="fade-left" data-aos-duration="1500">
               <h3>SHIPI-左手</h3>
               <p>
                 負責操縱快捷鍵的左手，<br>
@@ -50,7 +52,7 @@
           </div>
         </div>
         <div class="right">
-          <div class="right-bg">
+          <div class="right-bg" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="400">
             <div class="right-gradient"></div>
             <img src="./image/右手.jpg" class="right-img" alt="右手">
           </div>
@@ -58,7 +60,7 @@
             <div class="right-mobile-img">
               <img src="./image/右手.jpg" alt="左手">
             </div>
-            <div class="right-text">
+            <div class="right-text" data-aos="fade-right" data-aos-duration="1500" >
               <h3>SHIPI-右手</h3>
               <p>
                 負責繪畫的右手，<br>
@@ -76,23 +78,23 @@
       <section>
         <h2>商業設計</h2>
           <div class="business">
-            <div class="business-container" data-bImg="1">
+            <div class="business-container" data-bImg="1" data-aos="zoom-in-up" data-aos-duration="1000">
               <img src="./image/business.jpg" alt="business">
               <div class="business-topic-mask"></div>
             </div>
-            <div class="business-container" data-bImg="2">
+            <div class="business-container" data-bImg="2" data-aos="zoom-in-up" data-aos-duration="1000">
               <img src="./image/business2.jpg" alt="business">
               <div class="business-topic-mask"></div>
             </div>
-            <div class="business-container" data-bImg="3">
+            <div class="business-container" data-bImg="3" data-aos="zoom-in-up" data-aos-duration="1000">
               <img src="./image/business3.jpg" alt="business">
               <div class="business-topic-mask"></div>
             </div>
-            <div class="business-container" data-bImg="4">
+            <div class="business-container" data-bImg="4" data-aos="zoom-in-up" data-aos-duration="1000">
               <img src="./image/business4.jpg" alt="business">
               <div class="business-topic-mask"></div>
             </div>
-            <div class="business-container" data-bImg="4">
+            <div class="business-container" data-bImg="5" data-aos="zoom-in-up" data-aos-duration="1000">
               <img src="./image/business5.jpg" alt="business">
               <div class="business-topic-mask"></div>
             </div>
@@ -104,11 +106,11 @@
       <div class="footer-container">
         <h2><a href="#" class="footer-logo">路邊的一隻蛇皮</a></h2>
         <div class="contact-me">
-          <a href="https://www.instagram.com/shen_shipi/" class="instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.facebook.com/ShenShipi" class="facebook"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=100000331728591" class="personal-facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://twitter.com/agil548g6h6" class="twitter"><i class="fa-brands fa-twitter"></i></a>
-          <a href="https://www.pixiv.net/users/1417055" class="pixiv"><iconify-icon icon="simple-icons:pixiv"></iconify-icon></a>
+          <a href="https://www.instagram.com/shen_shipi/" class="instagram" data-aos="fade-down" data-aos-offset="-100" data-aos-duration="500"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ShenShipi" class="facebook" data-aos="fade-down" data-aos-offset="-100" data-aos-duration="500" data-aos-delay="300"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100000331728591" class="personal-facebook" data-aos="fade-down" data-aos-offset="-100" data-aos-duration="500" data-aos-delay="600"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://twitter.com/agil548g6h6" class="twitter" data-aos="fade-down" data-aos-offset="-100" data-aos-duration="500" data-aos-delay="900"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.pixiv.net/users/1417055" class="pixiv" data-aos="fade-down" data-aos-offset="-100" data-aos-duration="500" data-aos-delay="1200"><iconify-icon icon="simple-icons:pixiv"></iconify-icon></a>
         </div>
       </div>
       <div class="copyright">&copy 2023. Designer LDD</div>
@@ -120,8 +122,11 @@
     <div class="next"><i class="fa-solid fa-chevron-right"></i></div>
     <div class="pre"><i class="fa-solid fa-chevron-left"></i></div>
     <button class="close-btn">
-    <div class="lightbox-close"></div></button>
+      <div class="lightbox-close"></div>
+    </button>
   </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="all.js"></script>
 </body>
 </html>

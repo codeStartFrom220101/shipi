@@ -1,3 +1,5 @@
+AOS.init()
+
 const leftImg = document.querySelector('.left-bg>img')
 const rightImg = document.querySelector('.right-bg>img')
 const banner = document.querySelector('.banner')
@@ -77,9 +79,11 @@ if (leftImg) {
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > banner.offsetHeight -100) {
+    document.querySelector('.more-btn').style.color = 'white'
     logo.classList.remove('logo-bg')
     logo.classList.add('logo-bg-white')
   } else {
+    document.querySelector('.more-btn').style.color = 'black'
     logo.classList.remove('logo-bg-white')
     logo.classList.add('logo-bg')
   }

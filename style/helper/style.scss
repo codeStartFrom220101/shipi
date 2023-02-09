@@ -49,6 +49,11 @@ img {
   background-image: url(../image/logo白.png);
 }
 
+.more-btn {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 .banner {
   height: 856px;
   width: 100%;
@@ -164,7 +169,6 @@ section > h2 {
     background-attachment: unset;
     margin-bottom: 2rem;
     transition: 1.5s;
-    border: 1px solid #000;
   }
 
   .left-img {
