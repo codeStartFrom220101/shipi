@@ -508,30 +508,22 @@
   
   if (shipiArticles) {
     function articleOpenHandler() {
-      console.dir(this);
+      // articles height
       const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length-2)
       const img = document.createElement('img')
-      img.setAttribute
-      console.log(url);
+      img.setAttribute('src', url)
+
+      // article open & close
       if(this.classList.contains('open')) {
         this.classList.remove('open')
         return;
       }
-      const articles = this.parentElement.parentElement.querySelectorAll('.article')
-      articles.forEach(article => {
+      const article = this.parentElement.parentElement.querySelectorAll('.article')
+      article.forEach(article => {
         article.classList.remove('open')
       })
       this.classList.add('open')
     }
-
-    // function articleTransitionHandler(e) {
-    //   console.log(e);
-    //   if (e.propertyName.includes('flex') && this.classList.contains('open')) {
-    //     this.classList.add('open-active')
-    //   }
-    // }
-    
-    // articles.forEach(article => article.addEventListener('transitionend', articleTransitionHandler));
 
     const imgArr = articleArr.filter(img => !img.category.includes('漫畫') && !img.category.includes('教學') && !img.title.includes('步驟') )
     // let html = ''
@@ -552,12 +544,7 @@
         const article = document.querySelectorAll('.article')
         article.forEach(article => article.addEventListener('click', articleOpenHandler));
       }
-
-      // innerHTML
-      // const article = (i + 1) % 5 === 1 ? `<div class="articles"><div class="article" style="background-image: url(${img.imgUrl})"></div>`: (i + 1) % 5 === 0 ? `<div class="article" style="background-image: url(${img.imgUrl})"></div></div>` : `<div class="article" style="background-image: url(${img.imgUrl})"></div>`
-      // html += article;
     })
-    // html += '</div>'
-    // shipiArticles.innerHTML = html
   }
+  
 })()
