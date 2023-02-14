@@ -60,6 +60,8 @@ img {
 .more-btn {
   font-weight: bold;
   font-size: 1.2rem;
+  padding: 0.5rem 0;
+  display: block;
 }
 
 .banner {
@@ -617,4 +619,28 @@ section > h2 {
   right: 8px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   background: rgba(0, 0, 0, 0.1);
+}
+
+.article-banner {
+  height: 50vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
+
+.article-banner > h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  opacity: 0.8;
 }/*# sourceMappingURL=style.css.map */

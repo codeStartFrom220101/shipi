@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>shipi</title>
   <link rel="stylesheet" href="./node_modules/css-resetter/reset.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="style/all.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,15 +17,17 @@
 <body>
   <div class="wrap">
     <div class="navbar">
-      <h1><a href="#" class="logo logo-bg">路邊的一隻蛇皮</a></h1>
+      <h1><a href="index.html" class="logo logo-bg">路邊的一隻蛇皮</a></h1>
+      <a href="article.html" class="more-btn">更多作品</a>
     </div>
-    <div class="banner">
-      <div class="banner-gradient">
+    <div class="article-banner" style="background-image: url(../image/article-banner.jpg);">
+      
+      <h2>作品集</h2>
+    </div>
 
-      </div>
-    </div>
-
-    </div>
+    <section class="shipi-articles">
+      
+    </section>
 
     <div class="footer">
       <div class="footer-container">
@@ -49,6 +52,40 @@
       <div class="lightbox-close"></div>
     </button>
   </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="all.js"></script>
 </body>
 </html>
+
+<style>
+  .articles {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+
+  .article {
+    flex: 1;
+    background-position: center center;
+    background-size: cover;
+    transition: flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11), background 0.2s;
+    box-shadow: inset 0 0 5px 5px rgba(80, 73, 73, .5);
+    cursor: pointer;
+  }
+
+  .article.close {
+    background-size: cover;
+  }
+
+  .article.open {
+    flex: 3;
+  }
+
+  .article.open-active{
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+</style>

@@ -52,6 +52,8 @@ img {
 .more-btn {
   font-weight: bold;
   font-size: 1.2rem;
+  padding: .5rem 0;
+  display: block;
 }
 
 .banner {
@@ -564,10 +566,28 @@ section > h2 {
   }
 }
 
-@media (max-width: 768px) {
-  .business {
-  }
-  .business-container {
-  }
+// @media (max-width: 768px) {
+//   .business {
+//   }
+//   .business-container {
+//   }
+// }
+
+
+.article-banner {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
 }
 
+.article-banner > h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  opacity: .8;
+}
