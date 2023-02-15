@@ -178,13 +178,14 @@
     }
     
     function articleTransitionEnd(e) {
-      if (e.propertyName.includes('flex')) {
+      if (e.propertyName.includes('flex') && ( this.classList.contains('open') || this.classList.contains('open-width'))) {
         // console.dir(this);
         window.scrollTo({
           top: this.offsetTop,
           behavior: 'smooth'
         });
-        console.dir(window.scrollTo);
+        console.log(this);
+        console.log(this.offsetTop);
       }
     }
 
