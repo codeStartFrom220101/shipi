@@ -4,7 +4,7 @@
   
 
 
-
+  const wrap = document.querySelector('.wrap')
   const leftImg = document.querySelector('.left-bg>img')
   const rightImg = document.querySelector('.right-bg>img')
   const banner = document.querySelector('.banner')
@@ -34,7 +34,6 @@
     })
     rightMbImg.addEventListener('click', () => {
       right.classList.add('active')
-      console.log(rightMbImg);
       setTimeout(() => {
         right.classList.remove('active')
       }, 3000);
@@ -47,7 +46,6 @@
       
       mouseX = e.offsetX - e.target.offsetWidth / 2
       mouseY = e.offsetY - e.target.offsetHeight / 2  
-      // console.log(e);
       
       let mousePX = mouseX / e.target.offsetWidth
       let mousePY = mouseY / e.target.offsetHeight
@@ -145,6 +143,7 @@
   
   
   if (shipiArticles) {
+    
     function articleOpenHandler() {
       // articles height
       const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length - 2)
@@ -176,17 +175,18 @@
       })
       this.classList.add(open)
       this.parentElement.setAttribute('style', `height: ${height}px;`)
-      console.log(img.width > img.height, open);
     }
+    
+    const screenWidth = wrap.offsetWidth;
+
     let articleArr = []
       axios.get(url)
         .then(res => {
           articleArr = res.data.products;
           const imgArr = articleArr.filter(img => img.category.includes('圖片'))
-          // let html = ''
-          imgArr.forEach((img, i, arr) => {
-            // appendChild
-            if ((i + 1) % 10 === 1) {
+          let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
+          imgArr.forEach((img, i) => {
+            if ((i + 1) % artNum === 1) {
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
               articles.setAttribute('style', 'height: 50vh;')
@@ -199,10 +199,8 @@
             const article = document.createElement('div')
             article.setAttribute('class', 'article')
             article.setAttribute('style', `background-image: url(${img.imageUrl})`)
-            let count = Math.floor(i / 10)
+            let count = Math.floor(i / artNum)
             articles[count].appendChild(article)
-            if (arr.length - 1 === i) {
-            }
           })
           const article = document.querySelectorAll('.article')
           article.forEach(article => article.addEventListener('click', articleOpenHandler));
