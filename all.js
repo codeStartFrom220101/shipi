@@ -177,6 +177,17 @@
       this.parentElement.setAttribute('style', `height: ${height}px;`)
     }
     
+    function articleTransitionEnd(e) {
+      if (e.propertyName.includes('flex')) {
+        // console.dir(this);
+        window.scrollTo({
+          top: this.offsetTop,
+          behavior: 'smooth'
+        });
+        console.dir(window.scrollTo);
+      }
+    }
+
     const screenWidth = wrap.offsetWidth;
 
     let articleArr = []
@@ -204,6 +215,7 @@
           })
           const article = document.querySelectorAll('.article')
           article.forEach(article => article.addEventListener('click', articleOpenHandler));
+          article.forEach(article => article.addEventListener('transitionend', articleTransitionEnd));
         })
 
   }
