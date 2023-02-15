@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*
+@import './helper/reset.min.css'; /*
   https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
   box-shadow: [inset?] [top] [left] [blur] [size] [color];
 
@@ -10,7 +10,6 @@
     - Multiple shadows can be stacked
     - If you're animating multiple shadows, be sure to keep the same number of shadows on hover/focus as non-hover/focus (even if you have to create a transparent shadow) so the animation is smooth. Otherwise, you'll get something choppy.
 */
-@import './helper/reset.min.css';
 .fill:hover,
 .fill:focus {
   -webkit-box-shadow: inset 0 0 0 2em var(--hover);
