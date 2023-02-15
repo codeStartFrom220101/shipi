@@ -173,7 +173,7 @@
           // let html = ''
           imgArr.forEach((img, i, arr) => {
             // appendChild
-            if ((i + 1) % 5 === 1) {
+            if ((i + 1) % 10 === 1) {
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
               shipiArticles.appendChild(articles)
@@ -185,13 +185,13 @@
             const article = document.createElement('div')
             article.setAttribute('class', 'article')
             article.setAttribute('style', `background-image: url(${img.imageUrl})`)
-            let count = Math.floor(i / 5)
+            let count = Math.floor(i / 10)
             articles[count].appendChild(article)
             if (arr.length - 1 === i) {
-              const article = document.querySelectorAll('.article')
-              article.forEach(article => article.addEventListener('click', articleOpenHandler));
             }
           })
+          const article = document.querySelectorAll('.article')
+          article.forEach(article => article.addEventListener('click', articleOpenHandler));
         })
 
   }
