@@ -184,8 +184,6 @@
           top: this.offsetTop,
           behavior: 'smooth'
         });
-        console.log(this);
-        console.log(this.offsetTop);
       }
     }
 
