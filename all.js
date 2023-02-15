@@ -147,28 +147,41 @@
   if (shipiArticles) {
     function articleOpenHandler() {
       // articles height
-      const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length-2)
+      const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length - 2)
       const img = document.createElement('img')
       img.setAttribute('src', url)
       const open = img.width > img.height ? 'open-width' : 'open';
+      const thisArticleLength = this.parentElement.querySelectorAll('.article').length
+      const height = img.width > img.height ? (img.height / img.width) * this.parentElement.offsetWidth/(thisArticleLength + 9) * 10 : (img.height / img.width) * this.parentElement.offsetWidth/(thisArticleLength + 4) * 5
+
+
       if(this.classList.contains('open') || this.classList.contains('open-width')) {
         this.classList.remove('open')
         this.classList.remove('open-width')
+        this.parentElement.setAttribute('style', 'height: 50vh;')
         return;
       }
+
       const article = this.parentElement.parentElement.querySelectorAll('.article')
       article.forEach(article => {
         article.classList.remove('open')
         article.classList.remove('open-width')
       })
+      
+      const articles = this.parentElement.parentElement.querySelectorAll('.articles')
+      articles.forEach(articles => {
+        if (articles !== this.parentElement) {
+          articles.setAttribute('style', 'height: 50vh;')
+        }
+      })
       this.classList.add(open)
+      this.parentElement.setAttribute('style', `height: ${height}px;`)
       console.log(img.width > img.height, open);
     }
     let articleArr = []
       axios.get(url)
         .then(res => {
           articleArr = res.data.products;
-          console.log(articleArr);
           const imgArr = articleArr.filter(img => img.category.includes('圖片'))
           // let html = ''
           imgArr.forEach((img, i, arr) => {
@@ -176,6 +189,7 @@
             if ((i + 1) % 10 === 1) {
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
+              articles.setAttribute('style', 'height: 50vh;')
               shipiArticles.appendChild(articles)
             }
             // const imgHTML = document.createElement('img')
