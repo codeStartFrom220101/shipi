@@ -20,7 +20,7 @@
   const lightboxClose = lightbox.querySelector('.close-btn')
   
   const shipiArticles = document.querySelector('.shipi-articles')
-  // const articleBanner = document.querySelector('.article-banner')
+  const articleBanner = document.querySelector('.article-banner')
   
   let index = 0
   let arr = []
@@ -88,11 +88,11 @@
   window.addEventListener('scroll', () => {
     let bannerHeight = 0
     if (banner) {
-      bannerHeight = banner.offsetHeight
+      bannerHeight = banner.offsetHeight - 100
     } else {
-      return;
+      bannerHeight = articleBanner.offsetHeight
     }
-    if (window.scrollY > bannerHeight -100) {
+    if (window.scrollY > bannerHeight) {
       document.querySelector('.more-btn').style.color = 'white'
       logo.classList.remove('logo-bg')
       logo.classList.add('logo-bg-white')
