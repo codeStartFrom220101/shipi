@@ -18,13 +18,19 @@
   const lightbox = document.querySelector('.lightbox')
   const lightboxImg = lightbox.querySelector('img')
   const lightboxClose = lightbox.querySelector('.close-btn')
+  const pagePercentLeft = document.querySelector('.left-spin .mask')
+  const pagePercentRight = document.querySelector('.right-spin .mask')
+  const pagePercentImg = document.querySelector('.scroll-spin img')
+
+  console.log(pagePercentImg.style);
   
   const shipiArticles = document.querySelector('.shipi-articles')
   const articleBanner = document.querySelector('.article-banner')
   
   let index = 0
   let arr = []
-  
+  let totalHeight = 0
+
   if (leftMbImg) {
     leftMbImg.addEventListener('click', () => {
       left.classList.add('active')
@@ -99,8 +105,16 @@
       logo.classList.remove('logo-bg-white')
       logo.classList.add('logo-bg')
     }
+    const pagePercent = window.pageYOffset / (totalHeight - window.innerHeight)
+    if (pagePercent * 360 <= 180) {
+      pagePercentLeft.style.transform = `rotate(${pagePercent * 360}deg)`
+      pagePercentRight.style.transform = 'rotate(0deg)'
+    } else {
+      pagePercentLeft.style.transform = 'rotate(180deg)'
+      pagePercentRight.style.transform = `rotate(${pagePercent * 360 - 180}deg)`
+    }
+    pagePercentImg.style.transform = `rotate(${pagePercent * 360 + 180}deg)`
   })
-  
   // lightbox
   if (business) {
     business.addEventListener('click', (e) => {
@@ -202,8 +216,7 @@
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
               articles.setAttribute('style', 'height: 50vh;')
-              let animation = count % 2 > 0 ? 'fade-left' : 'fade-right'
-              articles.setAttribute('data-aos', animation)
+              articles.setAttribute('data-aos', 'zoom-in-up')
               articles.setAttribute('data-aos-duration', '1000')
               shipiArticles.appendChild(articles)
             }
@@ -220,6 +233,7 @@
           const article = document.querySelectorAll('.article')
           article.forEach(article => article.addEventListener('click', articleOpenHandler));
           article.forEach(article => article.addEventListener('transitionend', articleTransitionEnd));
+          totalHeight = wrap.scrollHeight
         })
 
   }

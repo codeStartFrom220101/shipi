@@ -21,7 +21,7 @@
       <a href="article.html" class="more-btn">更多作品</a>
     </div>
     <div class="article-banner">
-      
+      <div class="article-banner-mask"></div>
       <h2>蛇皮圖片館</h2>
     </div>
 
@@ -52,6 +52,14 @@
       <div class="lightbox-close"></div>
     </button>
   </div>
+  
+  <div class="scroll-spin-container">
+    <div class="scroll-spin">
+      <span class="left-spin"><span class="mask" style="transform: rotate();"></span></span>
+      <span class="right-spin"><span class="mask" style="transform: rotate();"></span></span>
+      <img src="./image/刺蝟.png" alt="刺蝟" style="transform: rotate(180deg);">
+    </div>
+  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="all.js"></script>
@@ -59,4 +67,13 @@
 </html>
 
 <style>
+  .scroll-spin img{
+    width: 30px;
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    z-index: 2;
+    transform-origin: 50% 50%;
+    transform: rotate();
+  }
 </style>
