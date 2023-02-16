@@ -195,7 +195,7 @@
           articleArr = res.data.products;
           const imgArr = articleArr.filter(img => img.category.includes('圖片'))
           let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
-          imgArr.forEach((img, i) => {
+          imgArr.forEach((img, i, arr) => {
             if ((i + 1) % artNum === 1) {
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
