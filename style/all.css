@@ -665,11 +665,6 @@ section > h2 {
   color: #1f2436;
 }
 
-@media (max-width: 1280px) {
-  .footer {
-    margin-top: 2rem;
-  }
-}
 .business {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -780,12 +775,12 @@ section > h2 {
           flex: 1;
   background-position: center center;
   background-size: cover;
-  -webkit-transition: background 0.2s, opacity 1s, -webkit-box-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11);
-  transition: background 0.2s, opacity 1s, -webkit-box-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11);
-  transition: flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s, opacity 1s;
-  transition: flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s, opacity 1s, -webkit-box-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), -ms-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11);
-  -webkit-box-shadow: inset 0 0 5px 5px rgba(143, 34, 34, 0.5);
-          box-shadow: inset 0 0 5px 5px rgba(143, 34, 34, 0.5);
+  -webkit-transition: background 0.2s, opacity 1s, -webkit-box-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), -webkit-box-shadow 1s;
+  transition: background 0.2s, opacity 1s, -webkit-box-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), -webkit-box-shadow 1s;
+  transition: flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s, opacity 1s, box-shadow 1s;
+  transition: flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s, opacity 1s, box-shadow 1s, -webkit-box-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), -ms-flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), -webkit-box-shadow 1s;
+  -webkit-box-shadow: inset 0 0 20px 15px rgba(88, 50, 50, 0.5);
+          box-shadow: inset 0 0 20px 15px rgba(88, 50, 50, 0.5);
   cursor: pointer;
   opacity: 0.5;
 }
@@ -795,6 +790,10 @@ section > h2 {
       -ms-flex: 5;
           flex: 5;
   opacity: 1;
+  -webkit-box-shadow: inset 0 0 10px 5px rgba(73, 58, 58, 0.5);
+          box-shadow: inset 0 0 10px 5px rgba(73, 58, 58, 0.5);
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .article.open-width {
@@ -802,6 +801,10 @@ section > h2 {
       -ms-flex: 10;
           flex: 10;
   opacity: 1;
+  -webkit-box-shadow: inset 0 0 10px 5px rgba(73, 58, 58, 0.5);
+          box-shadow: inset 0 0 10px 5px rgba(73, 58, 58, 0.5);
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .article.open-active {

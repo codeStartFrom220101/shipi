@@ -178,10 +178,10 @@
     }
     
     function articleTransitionEnd(e) {
-      if (e.propertyName.includes('flex') && ( this.classList.contains('open') || this.classList.contains('open-width'))) {
-        // console.dir(this);
+      if (e.propertyName.includes('opacity') && ( this.classList.contains('open') || this.classList.contains('open-width'))) {
+        console.log(window);
         window.scrollTo({
-          top: this.offsetTop,
+          top: this.parentElement.offsetTop,
           behavior: 'smooth'
         });
       }
@@ -196,10 +196,15 @@
           const imgArr = articleArr.filter(img => img.category.includes('圖片'))
           let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
           imgArr.forEach((img, i, arr) => {
+            let count = Math.floor(i / artNum)
+            if (i + 1 + (artNum / 2) > arr.length) return;
             if ((i + 1) % artNum === 1) {
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
               articles.setAttribute('style', 'height: 50vh;')
+              let animation = count % 2 > 0 ? 'fade-left' : 'fade-right'
+              articles.setAttribute('data-aos', animation)
+              articles.setAttribute('data-aos-duration', '1000')
               shipiArticles.appendChild(articles)
             }
             // const imgHTML = document.createElement('img')
@@ -209,7 +214,7 @@
             const article = document.createElement('div')
             article.setAttribute('class', 'article')
             article.setAttribute('style', `background-image: url(${img.imageUrl})`)
-            let count = Math.floor(i / artNum)
+            
             articles[count].appendChild(article)
           })
           const article = document.querySelectorAll('.article')
