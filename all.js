@@ -28,9 +28,12 @@
   const shipiArticles = document.querySelector('.shipi-articles')
   const articleBanner = document.querySelector('.article-banner')
   
+  const screenWidth = wrap.offsetWidth;
+  let articleArr = []
   let index = 0
   let arr = []
   let totalHeight = 0
+  let categoryNow = '圖片'
 
   if (leftMbImg) {
     leftMbImg.addEventListener('click', () => {
@@ -99,15 +102,21 @@
     }
     if (window.scrollY > bannerHeight) {
       totalHeight = wrap.scrollHeight
-      categoryMenu.classList.add('active')
-      categoryMenu.style.color = 'white'
-      document.querySelector('.more-btn').style.color = 'white'
+      if (articleBanner) {
+        categoryMenu.classList.add('active')
+        categoryMenu.style.color = 'white'
+      } else {
+        document.querySelector('.more-btn').style.color = 'white'
+      }
       logo.classList.remove('logo-bg')
       logo.classList.add('logo-bg-white')
     } else {
-      categoryMenu.classList.remove('active')
-      categoryMenu.style.color = 'black'
-      document.querySelector('.more-btn').style.color = 'black'
+      if (articleBanner) {
+        categoryMenu.classList.remove('active')
+        categoryMenu.style.color = 'black'
+      } else {
+        document.querySelector('.more-btn').style.color = 'black'
+      }
       logo.classList.remove('logo-bg-white')
       logo.classList.add('logo-bg')
     }
@@ -207,35 +216,48 @@
       totalHeight = wrap.scrollHeight
     }
 
-    const screenWidth = wrap.offsetWidth;
+    function renderData(arr, category = '圖片') {
+      shipiArticles.innerHTML = '';
+      console.log();
+      const imgArr = arr.filter(img => img.category.includes(category) ? img.category.includes(category) : img.title.includes(category))
+      let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
+      imgArr.forEach((img, i, arr) => {
+        let count = Math.floor(i / artNum)
+        if ((i + 1) % artNum === 1) {
+          const articles = document.createElement('div')
+          articles.setAttribute('class', 'articles')
+          articles.setAttribute('style', 'height: 50vh;')
+          // articles.setAttribute('data-aos', 'zoom-in-up')
+          // articles.setAttribute('data-aos-duration', '1000')
+          shipiArticles.appendChild(articles)
+        }
+        // const imgHTML = document.createElement('img')
+        // imgHTML.setAttribute('src', img.imageUrl)
+        // imgHTML.setAttribute('referrerpolicy', 'no-referrer')
+        const articles = document.querySelectorAll('.articles')
+        const article = document.createElement('div')
+        article.setAttribute('class', 'article')
+        article.setAttribute('style', `background-image: url(${img.imageUrl})`)
+        
+        articles[count].appendChild(article)
+      })
+    }
 
-    let articleArr = []
+    function categoryHandler(e) {
+      e.preventDefault();
+      if (categoryNow === this.dataset.category) return;
+      categoryNow = this.dataset.category
+      renderData(articleArr, categoryNow)
+    }
+
+    categoryMenu.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryHandler));
+    
+
+    
       axios.get(url)
         .then(res => {
           articleArr = res.data.products;
-          const imgArr = articleArr.filter(img => img.category.includes('圖片'))
-          let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
-          imgArr.forEach((img, i, arr) => {
-            let count = Math.floor(i / artNum)
-            if (i + 1 + (artNum / 2) > arr.length) return;
-            if ((i + 1) % artNum === 1) {
-              const articles = document.createElement('div')
-              articles.setAttribute('class', 'articles')
-              articles.setAttribute('style', 'height: 50vh;')
-              // articles.setAttribute('data-aos', 'zoom-in-up')
-              // articles.setAttribute('data-aos-duration', '1000')
-              shipiArticles.appendChild(articles)
-            }
-            // const imgHTML = document.createElement('img')
-            // imgHTML.setAttribute('src', img.imageUrl)
-            // imgHTML.setAttribute('referrerpolicy', 'no-referrer')
-            const articles = document.querySelectorAll('.articles')
-            const article = document.createElement('div')
-            article.setAttribute('class', 'article')
-            article.setAttribute('style', `background-image: url(${img.imageUrl})`)
-            
-            articles[count].appendChild(article)
-          })
+          renderData(articleArr, categoryNow)
           const article = document.querySelectorAll('.article')
           article.forEach(article => article.addEventListener('click', articleOpenHandler));
           article.forEach(article => article.addEventListener('transitionend', articleTransitionEnd));
