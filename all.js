@@ -20,9 +20,12 @@
   const lightboxClose = lightbox.querySelector('.close-btn')
 
   const categoryMenu = document.querySelector('.category-menu')
+  const categoryMenuMobile = document.querySelector('.category-menu-mobile')
+  const categoryMenuBtn = document.querySelector('.category-menu-icon')
   const pagePercentLeft = document.querySelector('.left-spin .mask')
   const pagePercentRight = document.querySelector('.right-spin .mask')
   const pagePercentImg = document.querySelector('.scroll-spin img')
+  const hamburger = document.querySelector('.hamburger')
 
   
   const shipiArticles = document.querySelector('.shipi-articles')
@@ -105,6 +108,8 @@
       if (articleBanner) {
         categoryMenu.classList.add('active')
         categoryMenu.style.color = 'white'
+        categoryMenuMobile.style.color = 'white'
+        hamburger.classList.add('active')
       } else {
         document.querySelector('.more-btn').style.color = 'white'
       }
@@ -114,6 +119,8 @@
       if (articleBanner) {
         categoryMenu.classList.remove('active')
         categoryMenu.style.color = 'black'
+        categoryMenuMobile.style.color = 'black'
+        hamburger.classList.remove('active')
       } else {
         document.querySelector('.more-btn').style.color = 'black'
       }
@@ -243,15 +250,21 @@
       })
     }
 
-    function categoryHandler(e) {
+    function categoryMenuHandler(e) {
       e.preventDefault();
       if (categoryNow === this.dataset.category) return;
       categoryNow = this.dataset.category
       renderData(articleArr, categoryNow)
     }
 
-    categoryMenu.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryHandler));
-    
+    function categoryMenuBtnHandler() {
+      this.classList.toggle('open')
+      categoryMenuMobile.classList.toggle('open')
+    }
+
+    categoryMenu.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
+    categoryMenuMobile.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
+    categoryMenuBtn.addEventListener('click', categoryMenuBtnHandler)
 
     
       axios.get(url)
