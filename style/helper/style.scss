@@ -19,6 +19,10 @@ img {
   font-family: 'Noto Sans TC', sans-serif;
 }
 
+.zeyada{
+  font-family: 'Zeyada', cursive;
+}
+
 .navbar {
   padding: 0 1rem;
   display: flex;
@@ -573,15 +577,15 @@ section > h2 {
 
 
 .article-banner {
-  height: 50vh;
+  height: 60vh;
   width: 100%;
   display: flex;
-  background-image: url(../image/article-banner.jpg);
+  background-image: url(../image/try2.jpg);
   justify-content: center;
   align-items: center;
   position: relative;
   background-size: cover;
-  background-position: center center;
+  background-position: 70% 0;
   z-index: 1;
 }
 
@@ -591,18 +595,39 @@ section > h2 {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(black, .2);
+  &.active {
+    background: rgba(black, .2);
+  }
 }
 
 .article-banner > h2 {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: bold;
+  text-align: center;
+  line-height: 0.8;
+
+  &>div {
+    font-size: 7rem;
+    font-weight: 600;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin-bottom: 4rem;
+  }
 }
 
 .articles {
   width: 100%;
   display: flex;
   transition: height 0.7s;
+}
+
+@media (max-width: 1280px) {
+  .article-banner {
+    background-image: url(../image/article-banner.jpg);
+  }
+
+  .article-banner > h2 {
+    font-size: 3rem;
+  }
 }
 
 .article {
@@ -655,6 +680,16 @@ section > h2 {
   border-radius: 50%;
   background: transparent;
   overflow: hidden;
+}
+
+.scroll-spin img{
+  width: 30px;
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  z-index: 2;
+  transform-origin: 50% 50%;
+  transform: rotate();
 }
 
 .scroll-spin > span {

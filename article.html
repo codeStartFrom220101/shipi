@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style/all.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Kalam:wght@700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Noto+Sans+TC:wght@400;700&family=Zeyada&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -18,11 +18,21 @@
   <div class="wrap">
     <div class="navbar">
       <h1><a href="index.html" class="logo logo-bg">路邊的一隻蛇皮</a></h1>
-      <a href="article.html" class="more-btn">更多作品</a>
+      <ul class="category-menu">
+        <li><a href="#" data-category="蛇皮">蛇皮</a></li>
+        <li><a href="#" data-category="左手">左手</a></li>
+        <li><a href="#" data-category="右手">右手</a></li>
+        <li><a href="#" data-category="漫畫">漫畫</a></li>
+        <li><a href="#" data-category="四格漫畫">四格漫畫</a></li>
+        <li><a href="#" data-category="其他">其他</a></li>
+      </ul>
     </div>
     <div class="article-banner">
       <div class="article-banner-mask"></div>
-      <h2>蛇皮圖片館</h2>
+      <h2 class="zeyada" style="letter-spacing: 4px;">
+        Gallery
+        <div >Gallery</div>
+      </h2>
     </div>
 
     <section class="shipi-articles">
@@ -67,13 +77,20 @@
 </html>
 
 <style>
-  .scroll-spin img{
-    width: 30px;
-    position: absolute;
-    top: 7px;
-    left: 11px;
-    z-index: 2;
-    transform-origin: 50% 50%;
-    transform: rotate();
+  .category-menu {
+    display: flex;
+    transform: translateY(-80px);
+    transition: all 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11);
+  }
+
+  .category-menu li a {
+    padding: 0.5rem .7rem;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .category-menu.active {
+    transform: translateY(0);
   }
 </style>

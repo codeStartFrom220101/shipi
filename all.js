@@ -18,6 +18,8 @@
   const lightbox = document.querySelector('.lightbox')
   const lightboxImg = lightbox.querySelector('img')
   const lightboxClose = lightbox.querySelector('.close-btn')
+
+  const categoryMenu = document.querySelector('.category-menu')
   const pagePercentLeft = document.querySelector('.left-spin .mask')
   const pagePercentRight = document.querySelector('.right-spin .mask')
   const pagePercentImg = document.querySelector('.scroll-spin img')
@@ -96,10 +98,15 @@
       bannerHeight = articleBanner.offsetHeight
     }
     if (window.scrollY > bannerHeight) {
+      totalHeight = wrap.scrollHeight
+      categoryMenu.classList.add('active')
+      categoryMenu.style.color = 'white'
       document.querySelector('.more-btn').style.color = 'white'
       logo.classList.remove('logo-bg')
       logo.classList.add('logo-bg-white')
     } else {
+      categoryMenu.classList.remove('active')
+      categoryMenu.style.color = 'black'
       document.querySelector('.more-btn').style.color = 'black'
       logo.classList.remove('logo-bg-white')
       logo.classList.add('logo-bg')
@@ -197,6 +204,7 @@
           behavior: 'smooth'
         });
       }
+      totalHeight = wrap.scrollHeight
     }
 
     const screenWidth = wrap.offsetWidth;
