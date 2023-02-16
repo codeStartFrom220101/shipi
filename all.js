@@ -248,6 +248,9 @@
         
         articles[count].appendChild(article)
       })
+      const article = document.querySelectorAll('.article')
+      article.forEach(article => article.addEventListener('click', articleOpenHandler));
+      article.forEach(article => article.addEventListener('transitionend', articleTransitionEnd));
     }
 
     function categoryMenuHandler(e) {
@@ -271,9 +274,6 @@
         .then(res => {
           articleArr = res.data.products;
           renderData(articleArr, categoryNow)
-          const article = document.querySelectorAll('.article')
-          article.forEach(article => article.addEventListener('click', articleOpenHandler));
-          article.forEach(article => article.addEventListener('transitionend', articleTransitionEnd));
           totalHeight = wrap.scrollHeight
         })
 
