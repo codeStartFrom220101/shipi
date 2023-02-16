@@ -22,7 +22,6 @@
   const pagePercentRight = document.querySelector('.right-spin .mask')
   const pagePercentImg = document.querySelector('.scroll-spin img')
 
-  console.log(pagePercentImg.style);
   
   const shipiArticles = document.querySelector('.shipi-articles')
   const articleBanner = document.querySelector('.article-banner')
@@ -193,7 +192,6 @@
     
     function articleTransitionEnd(e) {
       if (e.propertyName.includes('opacity') && ( this.classList.contains('open') || this.classList.contains('open-width'))) {
-        console.log(window);
         window.scrollTo({
           top: this.parentElement.offsetTop,
           behavior: 'smooth'
@@ -216,8 +214,8 @@
               const articles = document.createElement('div')
               articles.setAttribute('class', 'articles')
               articles.setAttribute('style', 'height: 50vh;')
-              articles.setAttribute('data-aos', 'zoom-in-up')
-              articles.setAttribute('data-aos-duration', '1000')
+              // articles.setAttribute('data-aos', 'zoom-in-up')
+              // articles.setAttribute('data-aos-duration', '1000')
               shipiArticles.appendChild(articles)
             }
             // const imgHTML = document.createElement('img')
