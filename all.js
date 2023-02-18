@@ -27,6 +27,7 @@
   const pagePercentRight = document.querySelector('.right-spin .mask')
   const pagePercentImg = document.querySelector('.scroll-spin img')
   const hamburger = document.querySelector('.hamburger')
+  const articleNotice = document.querySelector('.article-notice')
 
   
   const shipiArticles = document.querySelector('.shipi-articles')
@@ -191,7 +192,6 @@
   
   
   if (shipiArticles) {
-    
     function articleOpenHandler() {
       // articles height
       const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length - 2)
@@ -237,7 +237,6 @@
 
     function renderData(arr, category = '圖片') {
       shipiArticles.innerHTML = '';
-      console.log();
       const imgArr = arr.filter(img => {
         if (category === '其他') {
           return img.category.includes('圖片') && !img.title.includes('蛇皮') && !img.title.includes('左手') && !img.title.includes('右手')
@@ -258,6 +257,7 @@
         // const imgHTML = document.createElement('img')
         // imgHTML.setAttribute('src', img.imageUrl)
         // imgHTML.setAttribute('referrerpolicy', 'no-referrer')
+        
         const articles = document.querySelectorAll('.articles')
         const article = document.createElement('div')
         article.setAttribute('class', 'article')
@@ -299,10 +299,13 @@
     categoryMenu.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
     categoryMenuMobile.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
     categoryMenuBtnMobile.addEventListener('click', categoryMenuBtnHandler)
+    articleNotice.addEventListener('click', () => {
+      articleNotice.classList.add('active')
+    })
     axios.get(url)
       .then(res => {
-        articleArr = res.data.products;
-        // renderData(articleArr, categoryNow)
+        articleArr = res.data.products.reverse();
+        renderData(articleArr, categoryNow)
         totalHeight = wrap.scrollHeight
       })
   }
