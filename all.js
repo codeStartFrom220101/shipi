@@ -1,6 +1,5 @@
 ;(function(){
   AOS.init()
-  const url = `https://vue3-course-api.hexschool.io/api/shipi-api/products/all`
 
   const wrap = document.querySelector('.wrap')
   const leftImg = document.querySelector('.left-bg>img')
@@ -300,8 +299,9 @@
     categoryMenuMobile.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
     categoryMenuBtnMobile.addEventListener('click', categoryMenuBtnHandler)
     articleNotice.addEventListener('click', () => {
-      articleNotice.classList.add('active')
+      articleNotice.classList.remove('active')
     })
+    const url = `https://vue3-course-api.hexschool.io/api/shipi-api/products/all`
     axios.get(url)
       .then(res => {
         articleArr = res.data.products.reverse();
