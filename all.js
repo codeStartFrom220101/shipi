@@ -22,7 +22,7 @@
 
   const categoryMenu = document.querySelector('.category-menu')
   const categoryMenuMobile = document.querySelector('.category-menu-mobile')
-  const categoryMenuBtn = document.querySelector('.category-menu-icon')
+  const categoryMenuBtnMobile = document.querySelector('.category-menu-icon')
   const pagePercentLeft = document.querySelector('.left-spin .mask')
   const pagePercentRight = document.querySelector('.right-spin .mask')
   const pagePercentImg = document.querySelector('.scroll-spin img')
@@ -238,9 +238,14 @@
     function renderData(arr, category = '圖片') {
       shipiArticles.innerHTML = '';
       console.log();
-      const imgArr = arr.filter(img => img.category.includes(category) ? img.category.includes(category) : img.title.includes(category))
+      const imgArr = arr.filter(img => {
+        if (category === '其他') {
+          return img.category.includes('圖片') && !img.title.includes('蛇皮') && !img.title.includes('左手') && !img.title.includes('右手')
+        }
+        return img.category.includes(category) ? img.category.includes(category) : img.title.includes(category)
+      })
       let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
-      imgArr.forEach((img, i, arr) => {
+      imgArr.forEach((img, i) => {
         let count = Math.floor(i / artNum)
         if ((i + 1) % artNum === 1) {
           const articles = document.createElement('div')
@@ -269,6 +274,7 @@
       e.preventDefault();
       if (categoryNow === this.dataset.category) return;
       categoryNow = this.dataset.category
+      localStorage.setItem('categoryNow', categoryNow)
       renderData(articleArr, categoryNow)
       window.scrollTo({
         top: shipiArticles.offsetTop,
@@ -281,17 +287,23 @@
       categoryMenuMobile.classList.toggle('open')
     }
 
+    function closeCategoryMenu() {
+      categoryMenuMobile.classList.remove('open')
+      categoryMenuBtnMobile.classList.remove('open')
+    }
+
+    categoryMenuMobile.querySelectorAll('li a').forEach(a => {
+      a.addEventListener('click', closeCategoryMenu)
+    })
+
     categoryMenu.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
     categoryMenuMobile.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
-    categoryMenuBtn.addEventListener('click', categoryMenuBtnHandler)
+    categoryMenuBtnMobile.addEventListener('click', categoryMenuBtnHandler)
     axios.get(url)
       .then(res => {
         articleArr = res.data.products;
-        renderData(articleArr, categoryNow)
+        // renderData(articleArr, categoryNow)
         totalHeight = wrap.scrollHeight
       })
   }
-  
-  
-  
 })()
