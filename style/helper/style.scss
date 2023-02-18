@@ -213,6 +213,9 @@ section > h2 {
   .left-text {
     margin-right: 0;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
   }
 
   .left.active {
@@ -254,21 +257,19 @@ section > h2 {
   }
 }
 
-.btn > .pulse {
-  font-size: .8rem;
-  background: none;
-  border: 2px solid;
-  line-height: 1;
-  margin: 0.5em;
+.left-right-btn {
   width: 4rem;
   height: 4rem;
-  text-align: center;
+  font-size: 0.8rem;
   border-radius: 50%;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
 }
 
 @media (max-width: 768px) {
-  .btn > .pulse {
+  .pulse {
     font-size: .6rem;
     width: 3.5rem;
     height: 3.5rem;
@@ -324,6 +325,9 @@ section > h2 {
   color: white;
   margin-left: 8rem;
   text-align: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .right-text > h3 {
@@ -692,7 +696,6 @@ section > h2 {
   left: 11px;
   z-index: 2;
   transform-origin: 50% 50%;
-  transition: all 1s;
 }
 
 .scroll-spin img.active {

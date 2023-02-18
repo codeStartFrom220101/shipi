@@ -343,6 +343,16 @@ section > h2 {
   .left-text {
     margin-right: 0;
     width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
   }
   .left.active .left-bg {
     width: max(100vw, 500px);
@@ -380,21 +390,25 @@ section > h2 {
     font-size: 0.8rem;
   }
 }
-.btn > .pulse {
-  font-size: 0.8rem;
-  background: none;
-  border: 2px solid;
-  line-height: 1;
-  margin: 0.5em;
+.left-right-btn {
   width: 4rem;
   height: 4rem;
-  text-align: center;
+  font-size: 0.8rem;
   border-radius: 50%;
-  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid;
 }
 
 @media (max-width: 768px) {
-  .btn > .pulse {
+  .pulse {
     font-size: 0.6rem;
     width: 3.5rem;
     height: 3.5rem;
@@ -458,6 +472,16 @@ section > h2 {
   color: white;
   margin-left: 8rem;
   text-align: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .right-text > h3 {
@@ -883,8 +907,12 @@ section > h2 {
   z-index: 2;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
-  -webkit-transform: rotate();
-          transform: rotate();
+}
+
+.scroll-spin img.active {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  opacity: 0;
 }
 
 .scroll-spin > span {

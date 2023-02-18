@@ -1,14 +1,15 @@
 ;(function(){
   AOS.init()
   const url = `https://vue3-course-api.hexschool.io/api/shipi-api/products/all`
-  
-
 
   const wrap = document.querySelector('.wrap')
   const leftImg = document.querySelector('.left-bg>img')
+  const leftBtn = document.querySelector('.left-btn')
   const rightImg = document.querySelector('.right-bg>img')
+  const rightBtn = document.querySelector('.right-btn')
   const banner = document.querySelector('.banner')
   const logo = document.querySelector('.logo')
+  const moreBtn = document.querySelector('.more-btn')
   const leftMbImg = document.querySelector('.left-mobile-img>img')
   const rightMbImg = document.querySelector('.right-mobile-img>img')
   const left = document.querySelector('.left')
@@ -36,24 +37,12 @@
   let index = 0
   let arr = []
   let totalHeight = 0
-  let categoryNow = '圖片'
+  let categoryNow = localStorage.getItem('categoryNow')
 
   if (leftMbImg) {
-    leftMbImg.addEventListener('click', () => {
-      left.classList.add('active')
-      setTimeout(() => {
-        left.classList.remove('active')
-      }, 3000);
-    })
-    rightMbImg.addEventListener('click', () => {
-      right.classList.add('active')
-      setTimeout(() => {
-        right.classList.remove('active')
-      }, 3000);
-    })
   }
   
-  if (leftImg) {
+  if (leftImg || leftMbImg) {
     
     function handleMouseMove(e) {
       
@@ -94,6 +83,28 @@
     rightImg.addEventListener('mousemove', handleMouseMove)
     rightImg.addEventListener('mouseenter', handleMouseEnter)
     rightImg.addEventListener('mouseleave', handleMouseLeave)
+    leftBtn.addEventListener('click', () => {
+      localStorage.setItem('categoryNow', '左手')
+    })
+    rightBtn.addEventListener('click', () => {
+      localStorage.setItem('categoryNow', '右手')
+    })
+    moreBtn.addEventListener('click', () => {
+      localStorage.setItem('categoryNow', '圖片')
+    })
+
+    leftMbImg.addEventListener('click', () => {
+      left.classList.add('active')
+      setTimeout(() => {
+        left.classList.remove('active')
+      }, 3000);
+    })
+    rightMbImg.addEventListener('click', () => {
+      right.classList.add('active')
+      setTimeout(() => {
+        right.classList.remove('active')
+      }, 3000);
+    })
   }
   
   window.addEventListener('scroll', () => {
@@ -127,6 +138,7 @@
       logo.classList.remove('logo-bg-white')
       logo.classList.add('logo-bg')
     }
+
     const pagePercent = window.pageYOffset / (totalHeight - window.innerHeight)
     if (pagePercent * 360 <= 180) {
       pagePercentLeft.style.transform = `rotate(${pagePercent * 360}deg)`
@@ -258,6 +270,10 @@
       if (categoryNow === this.dataset.category) return;
       categoryNow = this.dataset.category
       renderData(articleArr, categoryNow)
+      window.scrollTo({
+        top: shipiArticles.offsetTop,
+        behavior: 'smooth'
+      })
     }
 
     function categoryMenuBtnHandler() {
@@ -268,15 +284,14 @@
     categoryMenu.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
     categoryMenuMobile.querySelectorAll('a').forEach(article => article.addEventListener('click', categoryMenuHandler));
     categoryMenuBtn.addEventListener('click', categoryMenuBtnHandler)
-
-    
-      axios.get(url)
-        .then(res => {
-          articleArr = res.data.products;
-          renderData(articleArr, categoryNow)
-          totalHeight = wrap.scrollHeight
-        })
-
+    axios.get(url)
+      .then(res => {
+        articleArr = res.data.products;
+        renderData(articleArr, categoryNow)
+        totalHeight = wrap.scrollHeight
+      })
   }
+  
+  
   
 })()
