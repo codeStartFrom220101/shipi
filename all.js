@@ -16,8 +16,6 @@
   const businessImg = document.querySelectorAll('.business-container>img')
   const business = document.querySelector('.business')
   const lightbox = document.querySelector('.lightbox')
-  const lightboxImg = lightbox.querySelector('img')
-  const lightboxClose = lightbox.querySelector('.close-btn')
 
   const categoryMenu = document.querySelector('.category-menu')
   const categoryMenuMobile = document.querySelector('.category-menu-mobile')
@@ -27,6 +25,7 @@
   const pagePercentImg = document.querySelector('.scroll-spin img')
   const hamburger = document.querySelector('.hamburger')
   const articleNotice = document.querySelector('.article-notice')
+  const comicLightbox = document.querySelector('.comic-lightbox')
 
   
   const shipiArticles = document.querySelector('.shipi-articles')
@@ -161,9 +160,11 @@
   }
   
   if (lightbox) {
+    const lightboxImg = lightbox.querySelector('img')
+    const lightboxClose = lightbox.querySelector('.close-btn')
     const lightboxNext = lightbox.querySelector('.next')
     const lightboxPre = lightbox.querySelector('.pre')
-    
+
     lightboxNext.addEventListener('click', () => {
       if (!lightbox.classList.contains('active')) {
         return;
@@ -189,6 +190,13 @@
     })
   }
   
+  if (comicLightbox) {
+    const comicLightboxClose = comicLightbox.querySelector('.close-btn')
+
+    comicLightboxClose.addEventListener('click', () => {
+      comicLightbox.classList.remove('active')
+    })
+  }
   
   if (shipiArticles) {
     function articleOpenHandler() {
@@ -252,17 +260,18 @@
           // articles.setAttribute('data-aos', 'zoom-in-up')
           // articles.setAttribute('data-aos-duration', '1000')
           shipiArticles.appendChild(articles)
-        }
-        // const imgHTML = document.createElement('img')
-        // imgHTML.setAttribute('src', img.imageUrl)
-        // imgHTML.setAttribute('referrerpolicy', 'no-referrer')
-        
+        }        
         const articles = document.querySelectorAll('.articles')
         const article = document.createElement('div')
         article.setAttribute('class', 'article')
         article.setAttribute('style', `background-image: url(${img.imageUrl})`)
         
         articles[count].appendChild(article)
+        // imgur 圖片刷新
+        // const imgHTML = document.createElement('img')
+        // imgHTML.setAttribute('src', img.imageUrl)
+        // imgHTML.setAttribute('referrerpolicy', 'no-referrer')
+        // articles[count].appendChild(imgHTML)
       })
       const article = document.querySelectorAll('.article')
       article.forEach(article => article.addEventListener('click', articleOpenHandler));
