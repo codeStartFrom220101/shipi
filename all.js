@@ -199,41 +199,49 @@
   }
   
   if (shipiArticles) {
+    const artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
+
     function articleOpenHandler() {
       // articles height
+      const article = this.parentElement.parentElement.querySelectorAll('.article')
+      const articles = this.parentElement.parentElement.querySelectorAll('.articles')
       const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length - 2)
       const img = document.createElement('img')
+      console.log(img);
       img.setAttribute('src', url)
-      const open = img.width > img.height ? 'open-width' : 'open';
+      const html = document.documentElement
+      let flex
+      if (artNum > 2) {
+        flex = img.width > 2 * img.height ? 20 : img.width > img.height ? 10 : 5
+      } else {
+        flex = 10
+      }
       const thisArticleLength = this.parentElement.querySelectorAll('.article').length
-      const height = img.width > img.height ? (img.height / img.width) * this.parentElement.offsetWidth/(thisArticleLength + 9) * 10 : (img.height / img.width) * this.parentElement.offsetWidth/(thisArticleLength + 4) * 5
+      const height = (img.height / img.width) * this.parentElement.offsetWidth / (thisArticleLength + ( flex - 1 )) * flex
+      html.style.setProperty('--article-flex', `${flex}`)
+      html.style.setProperty('--articles-height', `${height}px`)
 
-
-      if(this.classList.contains('open') || this.classList.contains('open-width')) {
-        this.classList.remove('open')
-        this.classList.remove('open-width')
-        this.parentElement.setAttribute('style', 'height: 50vh;')
+      if(this.classList.contains('active')) {
+        this.classList.remove('active')
+        this.parentElement.classList.remove('active')
         return;
       }
 
-      const article = this.parentElement.parentElement.querySelectorAll('.article')
       article.forEach(article => {
-        article.classList.remove('open')
-        article.classList.remove('open-width')
+        article.classList.remove('active')
       })
-      
-      const articles = this.parentElement.parentElement.querySelectorAll('.articles')
+
       articles.forEach(articles => {
         if (articles !== this.parentElement) {
-          articles.setAttribute('style', 'height: 50vh;')
+          articles.classList.remove('active')
         }
       })
-      this.classList.add(open)
-      this.parentElement.setAttribute('style', `height: ${height}px;`)
+      this.classList.add('active')
+      this.parentElement.classList.add('active')
     }
     
     function articleTransitionEnd(e) {
-      if (e.propertyName.includes('opacity') && ( this.classList.contains('open') || this.classList.contains('open-width'))) {
+      if (e.propertyName.includes('opacity') &&  this.classList.contains('active')) {
         window.scrollTo({
           top: this.parentElement.offsetTop,
           behavior: 'smooth'
@@ -244,21 +252,13 @@
 
     function renderData(arr, category = '圖片') {
       shipiArticles.innerHTML = '';
-      const imgArr = arr.filter(img => {
-        if (category === '其他') {
-          return img.category.includes('圖片') && !img.title.includes('蛇皮') && !img.title.includes('左手') && !img.title.includes('右手')
-        }
-        return img.category.includes(category) ? img.category.includes(category) : img.title.includes(category)
-      })
-      let artNum = screenWidth > 1280 ? 10 : screenWidth < 768 ? 2 : 6
+      const imgArr = arr.filter(img =>  category === '圖片' ? img.category.includes(category) : img.title.includes(category))
+      
       imgArr.forEach((img, i) => {
         let count = Math.floor(i / artNum)
         if ((i + 1) % artNum === 1) {
           const articles = document.createElement('div')
           articles.setAttribute('class', 'articles')
-          articles.setAttribute('style', 'height: 50vh;')
-          // articles.setAttribute('data-aos', 'zoom-in-up')
-          // articles.setAttribute('data-aos-duration', '1000')
           shipiArticles.appendChild(articles)
         }        
         const articles = document.querySelectorAll('.articles')
