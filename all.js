@@ -113,6 +113,7 @@
   }
   
   window.addEventListener('scroll', () => {
+    console.log(123);
     const underBannerHeight = banner ? banner.offsetHeight - 100 : articleBanner.offsetHeight
     const underBanner = window.scrollY > underBannerHeight ? true : false 
     const method = underBanner ? 'add' : 'remove'
@@ -191,6 +192,7 @@
       const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length - 2)
       const img = document.createElement('img')
       img.setAttribute('src', url)
+      console.log(img, this);
       const html = document.documentElement
       let flex
       if (artNum > 2) {
@@ -245,15 +247,15 @@
         }        
         const articles = document.querySelectorAll('.articles')
         const article = document.createElement('div')
-        article.setAttribute('class', 'article')
-        article.setAttribute('style', `background-image: url(${img.imageUrl})`)
+        // article.setAttribute('class', 'article')
+        // article.setAttribute('style', `background-image: url(${img.imageUrl})`)
         
         articles[count].appendChild(article)
         // imgur 圖片刷新
-        // const imgHTML = document.createElement('img')
-        // imgHTML.setAttribute('src', img.imageUrl)
-        // imgHTML.setAttribute('referrerpolicy', 'no-referrer')
-        // articles[count].appendChild(imgHTML)
+        const imgHTML = document.createElement('img')
+        imgHTML.setAttribute('src', img.imageUrl)
+        imgHTML.setAttribute('referrerpolicy', 'no-referrer')
+        articles[count].appendChild(imgHTML)
       })
       const article = document.querySelectorAll('.article')
       article.forEach(article => article.addEventListener('click', articleOpenHandler));
@@ -295,6 +297,7 @@
     const url = `https://vue3-course-api.hexschool.io/api/shipi-api/products/all`
     axios.get(url)
       .then(res => {
+        console.log(res);
         articleArr = res.data.products.reverse();
         renderData(articleArr, categoryNow)
         totalHeight = wrap.scrollHeight
