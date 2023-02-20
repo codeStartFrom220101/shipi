@@ -105,38 +105,21 @@
       }, 3000);
     })
   }
+
+
+  function articleScroll(method) {
+    categoryMenu.classList[method]('active')
+    hamburger.classList[method]('active')
+  }
   
   window.addEventListener('scroll', () => {
-    let bannerHeight = 0
-    if (banner) {
-      bannerHeight = banner.offsetHeight - 100
-    } else {
-      bannerHeight = articleBanner.offsetHeight
-    }
-    if (window.scrollY > bannerHeight) {
-      totalHeight = wrap.scrollHeight
-      if (articleBanner) {
-        categoryMenu.classList.add('active')
-        categoryMenu.style.color = 'white'
-        categoryMenuMobile.style.color = 'white'
-        hamburger.classList.add('active')
-      } else {
-        document.querySelector('.more-btn').style.color = 'white'
-      }
-      logo.classList.remove('logo-bg')
-      logo.classList.add('logo-bg-white')
-    } else {
-      if (articleBanner) {
-        categoryMenu.classList.remove('active')
-        categoryMenu.style.color = 'black'
-        categoryMenuMobile.style.color = 'black'
-        hamburger.classList.remove('active')
-      } else {
-        document.querySelector('.more-btn').style.color = 'black'
-      }
-      logo.classList.remove('logo-bg-white')
-      logo.classList.add('logo-bg')
-    }
+    const underBannerHeight = banner ? banner.offsetHeight - 100 : articleBanner.offsetHeight
+    const underBanner = window.scrollY > underBannerHeight ? true : false 
+    const method = underBanner ? 'add' : 'remove'
+    const color = underBanner ? 'white' : 'black'
+    banner ? null : articleScroll(method)
+    document.documentElement.style.setProperty('--underBannerColor', color)
+    logo.classList[method]('active')
 
     const pagePercent = window.pageYOffset / (totalHeight - window.innerHeight)
     if (pagePercent * 360 <= 180) {
@@ -207,7 +190,6 @@
       const articles = this.parentElement.parentElement.querySelectorAll('.articles')
       const url = this.style.backgroundImage.slice(5, this.style.backgroundImage.length - 2)
       const img = document.createElement('img')
-      console.log(img);
       img.setAttribute('src', url)
       const html = document.documentElement
       let flex
@@ -252,7 +234,7 @@
 
     function renderData(arr, category = '圖片') {
       shipiArticles.innerHTML = '';
-      const imgArr = arr.filter(img =>  category === '圖片' ? img.category.includes(category) : img.title.includes(category))
+      const imgArr = arr.filter(img =>  img.category.includes(category) ? img.category.includes(category) : img.title.includes(category))
       
       imgArr.forEach((img, i) => {
         let count = Math.floor(i / artNum)

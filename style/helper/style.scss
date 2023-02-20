@@ -1,4 +1,8 @@
 /* css reset */
+:root {
+  --underBannerColor: black;
+}
+
 body {
   margin: 0;
 }
@@ -43,21 +47,19 @@ img {
   text-indent: 101%;
   width: 116px;
   height: 70px;
-}
-
-.logo-bg {
   background-image: url(../image/logo.png);
 }
 
-.logo-bg-white {
+.logo.active {
   background-image: url(../image/logo白.png);
 }
+
 
 .more-btn {
   font-weight: bold;
   font-size: 1.2rem;
   padding: .5rem 0;
-  color: black;
+  color: var(--underBannerColor);
   display: block;
   text-decoration: none;
 }
@@ -828,6 +830,7 @@ section > h2 {
 }
 
 .category-menu {
+  color: var(--underBannerColor);
   display: flex;
   transform: translateY(-80px);
   transition: all 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11);
@@ -845,6 +848,7 @@ section > h2 {
 }
 
 .category-menu-mobile {
+  color: var(--underBannerColor);
   position: fixed;
   z-index: 10;
   width: 130px;
