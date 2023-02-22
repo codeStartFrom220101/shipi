@@ -106,13 +106,30 @@
     })
   }
 
+  function throtting(func, wait = 20, immediate = true) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      if (timeout) return;
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
 
   function articleScroll(method) {
     categoryMenu.classList[method]('active')
     hamburger.classList[method]('active')
   }
-  
-  window.addEventListener('scroll', () => {
+
+  function scrollHandler() {
+    console.log('scroll');
     const underBannerHeight = banner ? banner.offsetHeight - 100 : articleBanner.offsetHeight
     const underBanner = window.scrollY > underBannerHeight ? true : false 
     const method = underBanner ? 'add' : 'remove'
@@ -120,7 +137,7 @@
     banner ? null : articleScroll(method)
     document.documentElement.style.setProperty('--underBannerColor', color)
     logo.classList[method]('active')
-
+  
     const pagePercent = window.pageYOffset / (totalHeight - window.innerHeight)
     if (pagePercent * 360 <= 180) {
       pagePercentLeft.style.transform = `rotate(${pagePercent * 360}deg)`
@@ -130,7 +147,9 @@
       pagePercentRight.style.transform = `rotate(${pagePercent * 360 - 180}deg)`
     }
     pagePercentImg.style.transform = `rotate(${pagePercent * 360 + 180}deg)`
-  })
+  }
+
+  window.addEventListener('scroll', throtting(scrollHandler))
   // lightbox
   if (business) {
     business.addEventListener('click', (e) => {
@@ -194,13 +213,15 @@
       console.log(img, this);
       const html = document.documentElement
       let flex
+      const imgWidth = img.width ? img.width : 500
+      const imgHeight = img.height ? img.height : 500
       if (artNum > 2) {
-        flex = img.width > 2 * img.height ? 20 : img.width > img.height ? 10 : 5
+        flex = imgWidth > 2 * imgHeight ? 20 : imgWidth > imgHeight ? 10 : 5
       } else {
         flex = 10
       }
       const thisArticleLength = this.parentElement.querySelectorAll('.article').length
-      const height = (img.height / img.width) * this.parentElement.offsetWidth / (thisArticleLength + ( flex - 1 )) * flex
+      const height = (imgHeight / imgWidth) * this.parentElement.offsetWidth / (thisArticleLength + ( flex - 1 )) * flex
       html.style.setProperty('--article-flex', `${flex}`)
       html.style.setProperty('--articles-height', `${height}px`)
 

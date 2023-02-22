@@ -784,11 +784,6 @@ section > h2 {
   transform-origin: 50% 50%;
 }
 
-.scroll-spin img.active {
-  transform: rotate(0deg);
-  opacity: 0;
-}
-
 .scroll-spin > span {
   position: absolute;
   height: 100%; 
